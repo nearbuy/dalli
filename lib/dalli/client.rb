@@ -59,7 +59,7 @@ module Dalli
     end
 
     def get(key, options=nil)
-      resp = perform(:get, key)
+      resp = perform(:get, key, options)
       resp.nil? || 'Not found' == resp ? nil : resp
     end
 

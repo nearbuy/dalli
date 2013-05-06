@@ -101,6 +101,10 @@ describe 'Dalli' do
 
         assert_equal true, dc.set('a', nil)
         assert_nil dc.get('a')
+
+        dc.set('b', [0])
+        val3 = dc.get('b', :raw => true)
+        assert_equal Marshal.dump([0]), val3
       end
     end
 

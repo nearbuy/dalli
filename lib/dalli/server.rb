@@ -246,10 +246,10 @@ module Dalli
       Thread.current[:dalli_multi]
     end
 
-    def get(key)
+    def get(key, options=nil)
       req = [REQUEST, OPCODES[:get], key.bytesize, 0, 0, 0, key.bytesize, 0, 0, key].pack(FORMAT[:get])
       write(req)
-      generic_response(true)
+      generic_response(options.nil? || !options[:raw])
     end
 
     def getkq(key)
